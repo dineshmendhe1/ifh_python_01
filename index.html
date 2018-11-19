@@ -72,33 +72,102 @@
 					</section>
 
 					    <section>
-					<!--	<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment fade-up">fade-up (also down, left and right!)</p>
-						<p class="fragment fade-in-then-out">fades in, then out when we move to the next step</p>
-						<p class="fragment fade-in-then-semi-out">fades in, then obfuscate when we move to the next step</p>
-						<p class="fragment highlight-current-blue">blue only once</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>  --> 
+
+					    	Test Run
+								<!--	<p class="fragment shrink">shrink</p>
+									<p class="fragment fade-out">fade-out</p>
+									<p class="fragment fade-up">fade-up (also down, left and right!)</p>
+									<p class="fragment fade-in-then-out">fades in, then out when we move to the next step</p>
+									<p class="fragment fade-in-then-semi-out">fades in, then obfuscate when we move to the next step</p>
+									<p class="fragment highlight-current-blue">blue only once</p>
+									<p class="fragment highlight-red">highlight-red</p>
+									<p class="fragment highlight-green">highlight-green</p>
+									<p class="fragment highlight-blue">highlight-blue</p>  --> 
 						</section>
 							
 					</section>
-					
 
-					<!-- SLIDE 2 --> 
+
+
+					<!-- SLIDE 3 --> 
 					<section data-transition="slide">
-					  1. pip install tweepy
-					  2. pip install textblob
 
-					  -1 < sentiment < 1
+							  -1 < sentiment < 1
+						<pre><code data-trim data-noescape>
 
-					  Functions:
-					  a. .tabs
-					  b. .words
-					  c. .sentiment
+							  pip install tweepy
+							  pip install textblob
+
+							  from textblob import TextBlob
+
+							  sent = TextBlob("This is test sentence for sentiment analysis")
+							  sent.tabs
+							  sent.words
+							  sent.sentiment.polarity
+						</code></pre>
 
 					</section>
+					
+
+					<!-- SLIDE 4 --> 
+					<section>
+						<pre><code data-trim data-noescape>
+					import csv
+
+					<mark>from textblob import TextBlob</mark>
+
+					infile = 'data.csv'
+
+					with open(infile, 'r') as csvfile:
+    					rows = csv.reader(csvfile)
+    					for row in rows:
+		        			sentence = row[0]
+					        blob = TextBlob(sentence)
+					        print sentence
+					        print "Sentiment: "+ str(blob.sentiment.polarity) +"  Subjectivity: " +str(blob.sentiment.subjectivity)
+					        print "======================================================"
+
+					        
+						</code></pre>
+					</section>
+
+
+
+					<!-- SLIDE 5 --> 
+					<section>
+						<pre><code data-trim data-noescape>
+					import os
+					import re
+					import csv
+					from textblob import TextBlob
+
+					#file variable 
+					infile = 'data.csv'
+
+					#opent the text file for writing 
+					f= open("sentiment_tweets.csv","w+")
+
+					# Read tweet file, apply textblob function, write the results to file also do console output.
+					with open(infile, 'r') as csvfile:
+					    rows = csv.reader(csvfile)
+					    for row in rows:
+					        sentence = row[0]
+					        blob = TextBlob(sentence)
+						if(blob.sentiment.polarity > 0):
+							f.write(str(round(blob.sentiment.polarity,2))+","+"POSITIVE"+","+sentence+"\n\n") 
+						elif(blob.sentiment.polarity ==0):
+							f.write(str(round(blob.sentiment.polarity,2))+","+"NEUTRAL"+","+sentence+"\n\n") 
+						else:
+							f.write(str(round(blob.sentiment.polarity,2))+","+"NEGATIVE"+","+sentence+"\n\n") 
+					        print sentence
+					        print "Sentiment: "+ str(blob.sentiment.polarity) +"  Subjectivity: " +str(blob.sentiment.subjectivity)
+					        print "======================================================"
+					f.close()  
+
+					        
+						</code></pre>
+					</section>
+
 
 
 					<!-- SLIDE 3 --> 

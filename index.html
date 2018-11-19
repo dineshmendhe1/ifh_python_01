@@ -38,6 +38,9 @@
 					<p style="font-size: 18px; color:#1b91ff;" class="fragment">Dinesh Mendhe</p>
 					<p style="font-size: 18px; color:#1b91ff;" class="fragment">Application Developer</p>
 					<p style="font-size: 18px; color:#1b91ff;" class="fragment">dmendhe@ifh.rutgers.edu</p>
+					<p style='font-size: 24px; color:#33FF77;' class="fragment">Slide URL: https://bit.ly/2Q4Yajj</p>
+					<p style='font-size: 24px; color:#33FF77;' class="fragment">Git Repository: https://bit.ly/2KfVRoc</p>
+					    	
 
 				</section>
 
@@ -74,8 +77,9 @@
 					    <section>
 
 					    	Test Run
-					    	Slide URL: https://bit.ly/2Q4Yajj
-					    	Git Repository: https://bit.ly/2KfVRoc
+					    	<p style='font-size: 24px' class="fragment highlight-green">Slide URL: https://bit.ly/2Q4Yajj</p>
+					    	<p style='font-size: 24px' class="fragment highlight-green">Git Repository: https://bit.ly/2KfVRoc</p>
+					    	
 								<!--	<p class="fragment shrink">shrink</p>
 									<p class="fragment fade-out">fade-out</p>
 									<p class="fragment fade-up">fade-up (also down, left and right!)</p>
@@ -97,13 +101,15 @@
 							  -1 < sentiment < 1
 						<pre><code data-trim data-noescape>
 
+							  sudo easy_install pip
+
 							  pip install tweepy
 							  pip install textblob
 
 							  from textblob import TextBlob
 
-							  sent = TextBlob("This is test sentence for sentiment analysis")
-							  sent.tabs
+							  sent = TextBlob("This is test sentence for sentiment analysis.")
+							  sent.tags
 							  sent.words
 							  sent.sentiment.polarity
 						</code></pre>
